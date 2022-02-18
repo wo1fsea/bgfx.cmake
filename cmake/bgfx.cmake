@@ -113,6 +113,10 @@ if( UNIX AND NOT APPLE AND NOT EMSCRIPTEN AND NOT ANDROID )
 	target_link_libraries( bgfx PUBLIC ${X11_LIBRARIES} ${OPENGL_LIBRARIES})
 endif()
 
+if( ANDROID )
+	target_link_libraries( bgfx PUBLIC EGL)
+endif()
+
 # Exclude mm files if not on OS X
 if( NOT APPLE )
 	set_source_files_properties( ${BGFX_DIR}/src/glcontext_eagl.mm PROPERTIES HEADER_FILE_ONLY ON )
